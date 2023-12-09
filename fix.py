@@ -38,6 +38,7 @@ for i in range(n):
 
 waktu_sisa = [hitung[i][1] for i in range(n)]
 time = 0
+urutan_proses = []
 
 # Sorting proses berdasarkan waktu tiba (Diurutkan dari paling cepat)
 hitung.sort(key=lambda x: x[2])
@@ -58,6 +59,7 @@ while True:
         hitung[index][3] = hitung[index][4] - hitung[index][1]
 
     time += 1
+    urutan_proses.append(f"P{hitung[index][0]}")
 
 #Mengeluarkan data 
 for i in range(n):
@@ -66,6 +68,11 @@ for i in range(n):
 # Menghitug rata2 waktu tunggu dan waktu tunggu proses selanjutnya.
 rata2waktutunggu = sum(hitung[i][3] for i in range(n)) / n
 rata2waktutunggunext = sum(hitung[i][4] for i in range(n)) / n
+
+#Menampilkan visualisasi SJF
+print("\nAlur Proses:", end=" ")
+print("-> ".join(urutan_proses))
+print()
 
 print("Rata-rata waktu tunggu proses  = %.3f" % rata2waktutunggu )
 print("Rata-rata waktu tunggu proses selanjutnya = %.3f" % rata2waktutunggunext)
